@@ -1,0 +1,12 @@
+{
+  "name": "sustc-acas",
+  "scripts": {
+    "start": "nuxt",
+    "build": "nuxt build"
+  },
+  "dependencies": {
+    "element-ui": "^2.2.0",
+    "nuxt": "^1.3.0",
+    "pug": "^2.0.3"
+  }
+}
