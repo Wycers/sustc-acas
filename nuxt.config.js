@@ -1,15 +1,54 @@
+
 module.exports = {
-    /*
-    ** Global CSS
-    */
-    css: [
-      'element-ui/lib/theme-chalk/index.css'
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: 'sustc - acas',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Nuxt.js + Vuetify.js project' }
     ],
-  
-    /*
-    ** Add element-ui in our app, see plugins/element-ui.js file
-    */
-    plugins: [
-      '@/plugins/element-ui'
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
+  },
+  plugins: ['~/plugins/element-ui.js', '~/plugins/i18n.js'],
+  css: [
+    'element-ui/lib/theme-chalk/index.css'
+  ],
+  /*
+  ** Customize the progress bar color
+  */
+  loading: { color: '#3B8070' },
+  /*
+  ** Build configuration
+  */
+  router: {
+    middleware: ['i18n']
+  },
+  mode: 'spa',
+  build: {
+    vendor: [
+      '~/plugins/element-ui.js',
+      'vue-i18n',
+      '~/plugins/http.js'
+    ],
+    extractCSS: true,
+    /*
+    ** Run ESLint on save
+    */
+    extend (config, ctx) {
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+    }
   }
+}
