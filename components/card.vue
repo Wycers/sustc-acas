@@ -12,6 +12,7 @@
     el-checkbox-group(
       v-model="check"
       size="small"
+      @change="update"
     )
       el-checkbox(
         v-for="course in courses"
@@ -21,6 +22,11 @@
         :label="course.id"
       ) {{ course.name + ' ' + course.teacher}}
     div {{ this.check }}
+    el-alert(
+      v-if="check.length === 0"
+      title="您未选择任何课程哦"
+      type="warning"
+      show-icon)
 </template>
 <script>
 // :label="course.bj + ' ' + course.teacher"
@@ -44,6 +50,15 @@ export default {
       return this.num + ': ' + this.name
     }
   },
+  methods: {
+    update () {
+      console.log(this.check)
+      this.$store.commit('modifyCourses', {
+        num: this.num,
+        value: this.check
+      })
+    }
+  },
   mounted () {
     http.get('/query', {num: this.num}).then((response) => {
       console.log(response.data)
@@ -51,8 +66,15 @@ export default {
       if (this.courses.length !== 0) {
         this.name = this.courses[0].name
       }
-      // [ ...this.check ] = this.courses
+      this.check = []
+      for (var i in this.courses) {
+        this.check.push(this.courses[i].id)
+      }
       this.loading = false
+      this.$store.commit('initCourses', {
+        num: this.num,
+        value: this.check
+      })
     })
   }
 }

@@ -6,9 +6,10 @@ div
     filterable
     remote
     :remote-method="search"
-    :loading="loading"
+    :loading="sloading"
     placeholder="请输入关键字"
     style="width: 100%"
+    @change="update"
   )
     el-option(
       v-for="item in options"
@@ -22,29 +23,33 @@ div
       :key="item.name"
       :span="6"
     )
-      card(:num="item")
-  div {{value}}
-  div {{options}}
-  el-table(
-    :data="tableData"
-    border
-    style="width: 100%"
-  )
-    el-table-column(
-      prop="data"
-      label="日期"
-      width="180"
-    )
-    el-table-column(
-      prop="name"
-      label="姓名"
-      width="180"
-    )
-    el-table-column(
-      prop="address"
-      label="地址"
-      width="180"
-    )
+      card(
+        ref="CS309"
+        :num="item"
+      )
+  div {{ this.$store.state }}
+  el-button(
+    type="primary"
+    @click="submit"
+  ) 查看结果
+  //- el-table(
+  //-   :data="tableData"
+  //-   border
+  //-   style="width: 100%"
+  //-   v-loading="tloading"
+  //- )
+  //-   el-table-column(
+  //-     prop="data"
+  //-     label="日期"
+  //-   )
+  //-   el-table-column(
+  //-     prop="name"
+  //-     label="姓名"
+  //-   )
+  //-   el-table-column(
+  //-     prop="address"
+  //-     label="地址"
+  //-   )
 </template>
 <script>
 import http from '~/plugins/http.js'
@@ -57,16 +62,33 @@ export default {
     return {
       options: [],
       value: [],
-      loading: false
+      sloading: false,
+      tloading: false
     }
   },
   methods: {
+    update () {
+      this.$store.commit('checkCourses', {
+        num: this.value
+      })
+    },
     search (key) {
       this.loading = true
       http.get('/search', {keyword: key}).then((response) => {
         this.options = response.data
         this.loading = false
       })
+    },
+    async submit () {
+      var data = []
+      for (var i in this.$store.state.courses) {
+        if (this.$store.state.courses[i] === null) {
+          continue
+        }
+        data.push(this.$store.state.courses[i])
+      }
+      const response = await http.post('/work', {data})
+      console.log(response.data)
     }
   },
   created () {
