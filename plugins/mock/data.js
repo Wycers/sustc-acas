@@ -1,7 +1,8 @@
 // import mock from 'mockjs'
 let data = {
   cs: [],
-  CS309: []
+  CS309: [],
+  work: []
 }
 
 data.cs = [{
@@ -55,7 +56,7 @@ data.cs = [{
 }]
 
 data.CS309 = [{
-  'id': '186',
+  'id': 186,
   'num': 'CS309',
   'name': '\u9762\u5411\u5bf9\u8c61\u5206\u6790\u4e0e\u8bbe\u8ba1',
   'bj': '\u82f1\u6587\u73ed-\u5b9e\u9a8c2\u73ed',
@@ -76,5 +77,87 @@ data.CS309 = [{
   'teacher': '\u5f20\u715c\u7fa4',
   'time': '[[4, 3, 4], [4, 5, 6]]'
 }]
+
+data.work = {
+  'code': 0,
+  'msg': '',
+  'data': {
+    'tot': 8,
+    'courses': [
+      [{
+        'id': 186,
+        'name': '\u9762\u5411\u5bf9\u8c61\u5206\u6790\u4e0e\u8bbe\u8ba1',
+        'time': [36, 37, 49, 50]
+      }, {
+        'id': 170,
+        'name': 'EAP',
+        'time': [12, 13]
+      }],
+      [{
+        'id': 186,
+        'name': '\u9762\u5411\u5bf9\u8c61\u5206\u6790\u4e0e\u8bbe\u8ba1',
+        'time': [36, 37, 49, 50]
+      }, {
+        'id': 171,
+        'name': 'EAP',
+        'time': [5, 6]
+      }],
+      [{
+        'id': 187,
+        'name': '\u9762\u5411\u5bf9\u8c61\u5206\u6790\u4e0e\u8bbe\u8ba1',
+        'time': [36, 37, 47, 48]
+      }, {
+        'id': 169,
+        'name': 'EAP',
+        'time': [49, 50]
+      }],
+      [{
+        'id': 187,
+        'name': '\u9762\u5411\u5bf9\u8c61\u5206\u6790\u4e0e\u8bbe\u8ba1',
+        'time': [36, 37, 47, 48]
+      }, {
+        'id': 170,
+        'name': 'EAP',
+        'time': [12, 13]
+      }],
+      [{
+        'id': 187,
+        'name': '\u9762\u5411\u5bf9\u8c61\u5206\u6790\u4e0e\u8bbe\u8ba1',
+        'time': [36, 37, 47, 48]
+      }, {
+        'id': 171,
+        'name': 'EAP',
+        'time': [5, 6]
+      }],
+      [{
+        'id': 188,
+        'name': '\u9762\u5411\u5bf9\u8c61\u5206\u6790\u4e0e\u8bbe\u8ba1',
+        'time': [36, 37, 38, 39]
+      }, {
+        'id': 169,
+        'name': 'EAP',
+        'time': [49, 50]
+      }],
+      [{
+        'id': 188,
+        'name': '\u9762\u5411\u5bf9\u8c61\u5206\u6790\u4e0e\u8bbe\u8ba1',
+        'time': [36, 37, 38, 39]
+      }, {
+        'id': 170,
+        'name': 'EAP',
+        'time': [12, 13]
+      }],
+      [{
+        'id': 188,
+        'name': '\u9762\u5411\u5bf9\u8c61\u5206\u6790\u4e0e\u8bbe\u8ba1',
+        'time': [36, 37, 38, 39]
+      }, {
+        'id': 171,
+        'name': 'EAP',
+        'time': [5, 6]
+      }]
+    ]
+  }
+}
 
 export default data

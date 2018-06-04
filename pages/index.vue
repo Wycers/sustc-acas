@@ -21,7 +21,7 @@ div
     el-col(
       v-for="item in value"
       :key="item.name"
-      :span="6"
+      :span="8"
     )
       card(
         ref="CS309"
@@ -32,36 +32,22 @@ div
     type="primary"
     @click="submit"
   ) 查看结果
-  //- el-table(
-  //-   :data="tableData"
-  //-   border
-  //-   style="width: 100%"
-  //-   v-loading="tloading"
-  //- )
-  //-   el-table-column(
-  //-     prop="data"
-  //-     label="日期"
-  //-   )
-  //-   el-table-column(
-  //-     prop="name"
-  //-     label="姓名"
-  //-   )
-  //-   el-table-column(
-  //-     prop="address"
-  //-     label="地址"
-  //-   )
+  board(:methods="methods")
 </template>
 <script>
 import http from '~/plugins/http.js'
 import card from '~/components/card.vue'
+import board from '~/components/board.vue'
 export default {
   components: {
-    'card': card
+    'card': card,
+    'board': board
   },
   data () {
     return {
       options: [],
       value: [],
+      methods: [],
       sloading: false,
       tloading: false
     }
@@ -88,7 +74,19 @@ export default {
         data.push(this.$store.state.courses[i])
       }
       const response = await http.post('/work', {data})
-      console.log(response.data)
+      if (response.data.code !== 0) {
+        this.$alert('服务器发生错误', '提示', {
+          confirmButtonText: '确定'
+        })
+        return
+      }
+      if (response.data.data.tot === 0) {
+        this.$alert('没有可行的排课方案', '提示', {
+          confirmButtonText: '确定'
+        })
+      }
+      this.methods = response.data.data
+      console.log(response.data.data)
     }
   },
   created () {

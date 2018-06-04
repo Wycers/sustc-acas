@@ -10,9 +10,13 @@ mock.onGet('/search').reply(({params}) => {
 })
 
 mock.onGet('/query').reply(({params}) => {
-  console.log('test')
   console.log(params)
   return [200, data.CS309]
+})
+
+mock.onPost('/work').reply((params) => {
+  console.log(params.data)
+  return [200, data.work]
 })
 
 export default mock

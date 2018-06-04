@@ -20,8 +20,7 @@
         class="text item"
         border
         :label="course.id"
-      ) {{ course.name + ' ' + course.teacher}}
-    div {{ this.check }}
+      ) {{ course.bj + ' ' + course.teacher}}
     el-alert(
       v-if="check.length === 0"
       title="您未选择任何课程哦"
