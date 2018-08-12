@@ -4,10 +4,10 @@ const config = {
   url: baseUrl,
   ajaxUploadUrl: `${baseUrl}/api/upload`,
   debug: {
-    mock: true, // enable mock
-    http: false // http request log
+    mock: false, // enable mock
+    http: true // http request log
   },
-  api: `${baseUrl}/api`
+  api: `${baseUrl}/`
 }
 
 global.config = config

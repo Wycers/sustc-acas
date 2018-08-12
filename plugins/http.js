@@ -11,7 +11,7 @@ if (!config.debug.mock) {
 
 const http = axios.create({
   baseURL: config.api,
-  timeout: 1000
+  timeout: 0
 })
 
 Vue.use(VueAxios, http)

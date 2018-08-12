@@ -1,0 +1,20 @@
+{
+    "home": {
+        "title": "树德书院 首页",
+        "introduction": "这是一段中文介绍。"
+    },
+    "mentor": {
+        "title": "书院导师"
+    },
+    "archive": "归档",
+    "article": {
+        "pushedAt": "推送于"
+    },
+    "wishes": {
+        "title": "院长寄语"
+    },
+    "footer": {
+        "copyright": "树德书院 保留所有权利"
+    }
+}
+

@@ -60,7 +60,8 @@ export default {
     },
     search (key) {
       this.loading = true
-      http.get('/search', {keyword: key}).then((response) => {
+      console.log(key)
+      http.get('/search', {params: {keyword: key}}).then((response) => {
         this.options = response.data
         this.loading = false
       })
@@ -73,7 +74,7 @@ export default {
         }
         data.push(this.$store.state.courses[i])
       }
-      const response = await http.post('/work', {data})
+      const response = await http.post('/work', {courses: data})
       if (response.data.code !== 0) {
         this.$alert('服务器发生错误', '提示', {
           confirmButtonText: '确定'

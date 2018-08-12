@@ -1,0 +1,15 @@
+{
+    "home": {
+        "title": "Shude College Home Page",
+        "introduction": "This is an introduction in English."
+    },
+    "mentor": {
+        "title": "Mentors"
+    },
+    "wishes": {
+        "title": "Dean's wishes"
+    },
+    "footer": {
+        "copyright": "Shude College All Rights Reserved"
+    }
+}

@@ -59,7 +59,7 @@ export default {
     }
   },
   mounted () {
-    http.get('/query', {num: this.num}).then((response) => {
+    http.get('/query', {params: {keyword: this.num}}).then((response) => {
       console.log(response.data)
       this.courses = response.data
       if (this.courses.length !== 0) {

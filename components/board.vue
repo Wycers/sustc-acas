@@ -4,8 +4,6 @@ el-row(class='tac')
     el-menu(
       default-active='0'
       class='el-menu-vertical-demo'
-      @open='handleOpen'
-      @close='handleClose'
     )
       el-menu-item(
         v-for='(method, index) in methods.courses'
